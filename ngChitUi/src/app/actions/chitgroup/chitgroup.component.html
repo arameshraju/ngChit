@@ -1,0 +1,28 @@
+<div class="row justify-content-md-center">
+  <form class="col-sm-4" [formGroup]="chitgroupForm " (ngSubmit)="submitHandler(chitgroupForm.value)">
+    <div class="form-group">
+      <label for="inputgroupcode"> Group Code  </label>
+      <input type="text" class="form-control" id="inputgroupcode"
+             formControlName="groupcode" aria-describedby="userHelp" placeholder="Enter groupcode">
+      <small id="userHelp" class="form-text text-muted">Should be unique</small>
+    </div>
+    <div class="form-group">
+      <label for="InputGroupName">Group Name</label>
+      <input type="text" formControlName="groupName" class="form-control" id="InputGroupName" placeholder="Group Name">
+    </div>
+    <div class="form-group">
+      <label for="InputChitValue">Chit Value</label>
+      <input type="text" formControlName="chitValue" class="form-control" id="InputChitValue" placeholder="Chit Values">
+    </div>
+    <div class="form-group">
+      <label for="InputMonths">Number of Months</label>
+      <input type="text" formControlName="months" class="form-control" id="InputMonths" placeholder="number of Months">
+    </div>
+    <div class="form-group">
+      <label for="InputSubscription">Subscription</label>
+      <input type="text" formControlName="subscription" class="form-control" id="InputSubscription" placeholder="Subscription Values">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>

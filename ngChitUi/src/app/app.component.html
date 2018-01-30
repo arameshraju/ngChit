@@ -9,8 +9,11 @@
       <li class="nav-item dropdown"><a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Actions
       </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+          <a class="dropdown-item"  routerLink="/actions/chitgroup"  >Chit Groups</a>
+          <a class="dropdown-item"  routerLink="/actions/customer"  >Customer</a>
+          <a class="dropdown-item"  routerLink="/actions/employee"  >Employee/Agent</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
 
@@ -18,8 +21,9 @@
       <li class="nav-item dropdown"><a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Reports
       </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+          <a class="dropdown-item"  routerLink="/reports/daybook"  >Daybook</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
 
@@ -35,15 +39,7 @@
   </div>
 </nav>
 
-
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <h1>Angular Router</h1>
-  <nav>
-
-  </nav>
+<div class="container">
   <router-outlet></router-outlet>
+  <!-- Content here -->
 </div>
-
