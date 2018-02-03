@@ -12,17 +12,41 @@
     </div>
     <div class="form-group">
       <label for="InputChitValue">Chit Value</label>
-      <input type="text" formControlName="chitValue" class="form-control" id="InputChitValue" placeholder="Chit Values">
+      <input type="number" formControlName="chitValue" class="form-control" id="InputChitValue" placeholder="Chit Values">
     </div>
     <div class="form-group">
       <label for="InputMonths">Number of Months</label>
-      <input type="text" formControlName="months" class="form-control" id="InputMonths" placeholder="number of Months">
+      <input type="number" formControlName="months" class="form-control" id="InputMonths" placeholder="number of Months">
     </div>
     <div class="form-group">
       <label for="InputSubscription">Subscription</label>
-      <input type="text" formControlName="subscription" class="form-control" id="InputSubscription" placeholder="Subscription Values">
+      <input type="number" formControlName="subscription" class="form-control" id="InputSubscription" placeholder="Subscription Values">
     </div>
 
     <button type="submit" class="btn btn-primary">Save</button>
   </form>
+</div>
+<div class="row justify-content-md-center">
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Group Code</th>
+      <th scope="col">Group Name</th>
+      <th scope="col">Chit Values</th>
+      <th scope="col">Months</th>
+      <th scope="col">Subscription</th>
+      <th scope="col">action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cg of chitgorupList">
+      <td scope="row">{{cg.groupcode}}</td>
+      <td scope="row">{{cg.groupName}}</td>
+      <td scope="row">{{cg.chitValue}}</td>
+      <td scope="row">{{cg.months}}</td>
+      <td scope="row">{{cg.subscription}}</td>
+      <td scope="row"> <span class="btn btn-info" (click)="viewGroup(cg.groupcode)">View</span> </td>
+    </tr>
+    </tbody>
+  </table>
 </div>

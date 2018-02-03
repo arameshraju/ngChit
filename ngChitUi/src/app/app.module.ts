@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+/**  Services  */
+
+import { ChitgroupDataService } from './services/chitgroup-data.service';
+
+/**  Components  */
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -61,7 +66,7 @@ pathMatch: 'full'
       { enableTracing: true } // <-- debugging purposes only
       ),FormsModule,ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ChitgroupDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

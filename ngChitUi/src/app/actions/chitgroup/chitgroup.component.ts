@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { ChitgroupDataService } from '../../services/chitgroup-data.service';
+import {ChitGroup} from '../../models/chit-group';
 
 @Component({
   selector: 'app-chitgroup',
@@ -10,7 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ChitgroupComponent implements OnInit {
 
  chitgroupForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+  chitgorupList:object[];
+  constructor(private formBuilder: FormBuilder,private chitgroupData : ChitgroupDataService ) {
       this.chitgroupForm = formBuilder.group({
         groupcode: [null,Validators.required],
         groupName: [null,Validators.required],
@@ -20,10 +22,21 @@ export class ChitgroupComponent implements OnInit {
       });
     }
   submitHandler(formData) {
+
     console.log(formData);
   }
+  viewGroup(data){
+     let cdata = this.chitgroupData.getChitGroup(data);
+      this.chitgroupForm.setValue({
+        groupcode:cdata.groupcode,
+        groupName:cdata.groupName,
+        chitValue:cdata.chitValue,
+        months:cdata.months,
+        subscription:cdata.subscription
+      })
+  }
   ngOnInit() {
-
+      this.chitgorupList=this.chitgroupData.getChitGroupList();
   }
 
 }
