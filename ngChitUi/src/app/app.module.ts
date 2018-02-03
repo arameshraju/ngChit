@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 /**  Services  */
 
 import { ChitgroupDataService } from './services/chitgroup-data.service';
+import { CustomerDataService } from './services/customer-data.service';
+import { EmployeeDataService } from './services/employee-data.service';
 
 /**  Components  */
 
@@ -66,7 +68,7 @@ pathMatch: 'full'
       { enableTracing: true } // <-- debugging purposes only
       ),FormsModule,ReactiveFormsModule
   ],
-  providers: [ChitgroupDataService],
+  providers: [ChitgroupDataService,CustomerDataService,EmployeeDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

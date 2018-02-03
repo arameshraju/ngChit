@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmployeeDataService } from '../../services/employee-data.service';
+import {Employee} from '../../models/employee';
 
 @Component({
   selector: 'app-employee',
@@ -9,7 +11,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class EmployeeComponent implements OnInit {
 
  employeeForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+  employeeList : Employee[];
+
+  constructor(private formBuilder: FormBuilder,private employeeData : EmployeeDataService) {
       this.employeeForm = formBuilder.group({
         employeeCode: [null,Validators.required],
         employeeName: [null,Validators.required],
@@ -22,8 +26,20 @@ export class EmployeeComponent implements OnInit {
     console.log(formData);
   }
 
+  viewEmployee(data){
+     let cdata = this.employeeData.getEmployee(data);
+      this.employeeForm.setValue({
+        employeeCode:cdata.employeeCode,
+        employeeName:cdata.employeeName,
+        address:cdata.address,
+        phone:cdata.phone,
+        email:cdata.email
+      })
+  }
 
   ngOnInit() {
+    this.employeeList=this.employeeData.getEmployeeList();
+
   }
 
 }
