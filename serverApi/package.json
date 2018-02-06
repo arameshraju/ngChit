@@ -9,6 +9,7 @@
   "author": "Ramesh.Raju.",
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.188.0",
     "express": "^4.16.2",
     "nodeunit": "^0.11.2"
   }
