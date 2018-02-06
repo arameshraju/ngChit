@@ -14,5 +14,6 @@ app.get('/', function (req, res) {
 
 app.use(require('./action/customer'));
 app.use(require('./action/chitgroup'));
+app.use(require('./action/employee'));
 
 app.listen(3000)

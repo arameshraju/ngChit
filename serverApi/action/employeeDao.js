@@ -41,7 +41,7 @@ var params = {
 
 };
 
-function scanEmployeeAll(){
+function scanEmployeeAll(callBk){
 var params = {
  ExpressionAttributeValues: {
   ":topic": {
@@ -53,15 +53,20 @@ var params = {
  TableName: TABNAME
 };
 
+
 ddb.scan(params, function(err, data) {
+var pdata=[];
   if (err) {
     console.log("Error", err);
+    callBk([]);
   } else {
-    data.Items.forEach(function(element, index, array) {
-      console.log(element.employeeCode.S + " (" + JSON.stringify(element) + ")");
-    });
+     data.Items.forEach(function(element, index, array) {
+         pdata.push(element);
+       });
+               callBk(pdata) ;
   }
 });
+
 
 }
 

@@ -42,7 +42,7 @@ var params = {
 
 };
 
-function scanChitGroupAll(){
+function scanChitGroupAll(callBk){
 var params = {
  ExpressionAttributeValues: {
   ":topic": {
@@ -55,14 +55,18 @@ var params = {
 };
 
 ddb.scan(params, function(err, data) {
+var pdata=[];
   if (err) {
     console.log("Error", err);
+            callBk([]);
   } else {
     data.Items.forEach(function(element, index, array) {
-      console.log(element.groupcode.S + " (" + JSON.stringify(element) + ")");
+      pdata.push(element);
     });
-  }
+            callBk(pdata) ;
+     }
 });
+
 
 }
 

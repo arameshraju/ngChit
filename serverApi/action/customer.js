@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var dao = require('./customerDao');
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {
   console.log('Time: ', Date.now());
@@ -10,7 +10,8 @@ router.use(function timeLog(req, res, next) {
 
 // Define the home page route
 router.get('/action/customer', function(req, res) {
-  res.send('home for customer page');
+
+  dao.scanCustomerAll(function(data){ res.send(  data);});
 });
 
 // Define the about route

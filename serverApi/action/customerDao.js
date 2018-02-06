@@ -41,7 +41,7 @@ var params = {
 
 };
 
-function scanCustomerAll(){
+function scanCustomerAll(callBk){
 var params = {
  ExpressionAttributeValues: {
   ":topic": {
@@ -54,12 +54,15 @@ var params = {
 };
 
 ddb.scan(params, function(err, data) {
+var pdata=[];
   if (err) {
     console.log("Error", err);
+    callBk([]);
   } else {
-    data.Items.forEach(function(element, index, array) {
-      console.log(element.customerCode.S + " (" + JSON.stringify(element) + ")");
-    });
+     data.Items.forEach(function(element, index, array) {
+         pdata.push(element);
+       });
+               callBk(pdata) ;
   }
 });
 
