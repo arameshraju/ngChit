@@ -3,6 +3,8 @@ var app = express()
 
 var myLogger = function (req, res, next) {
   console.log('LOGGED')
+   res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next()
 }
 

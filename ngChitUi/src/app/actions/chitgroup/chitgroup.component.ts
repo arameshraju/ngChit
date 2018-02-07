@@ -26,7 +26,7 @@ export class ChitgroupComponent implements OnInit {
     console.log(formData);
   }
   viewGroup(data){
-     let cdata = this.chitgroupData.getChitGroup(data);
+     let cdata = this.chitgroupData.getChitGroup(this.chitgorupList,data);
       this.chitgroupForm.setValue({
         groupcode:cdata.groupcode,
         groupName:cdata.groupName,
@@ -36,7 +36,7 @@ export class ChitgroupComponent implements OnInit {
       })
   }
   ngOnInit() {
-      this.chitgorupList=this.chitgroupData.getChitGroupList();
+      this.chitgroupData.getChitGroupList().subscribe(data =>  { this.chitgorupList =data['listdata']});
   }
 
 }

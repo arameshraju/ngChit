@@ -4,4 +4,5 @@
  // Create DynamoDB service object
  AWS.config.update({ accessKeyId: "myKeyId", secretAccessKey: "secretKey", region: "us-east-1" });
 
+//module.exports = new AWS.DynamoDB({ endpoint: new AWS.Endpoint('http://localhost:8000') });
 module.exports = new AWS.DynamoDB({ endpoint: new AWS.Endpoint('http://localhost:8000') });

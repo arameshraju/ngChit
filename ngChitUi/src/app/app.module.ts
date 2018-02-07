@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 /**  Services  */
 
 import { ChitgroupDataService } from './services/chitgroup-data.service';
@@ -66,7 +67,7 @@ pathMatch: 'full'
     BrowserModule,FormsModule,  RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-      ),FormsModule,ReactiveFormsModule
+      ),FormsModule,ReactiveFormsModule,HttpClientModule
   ],
   providers: [ChitgroupDataService,CustomerDataService,EmployeeDataService],
   bootstrap: [AppComponent]

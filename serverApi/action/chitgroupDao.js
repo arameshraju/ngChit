@@ -1,5 +1,5 @@
 var ddb= require('./connection');
-
+var attr = require('dynamodb-data-types').AttributeValue;
 
 
 function putChitGroupData(data){
@@ -53,7 +53,6 @@ var params = {
  ProjectionExpression: "groupcode, groupName,chitValue,months,subscription",
  TableName: "CHITGROUP_MST"
 };
-
 ddb.scan(params, function(err, data) {
 var pdata=[];
   if (err) {
@@ -61,9 +60,9 @@ var pdata=[];
             callBk([]);
   } else {
     data.Items.forEach(function(element, index, array) {
-      pdata.push(element);
+      pdata.push(attr.unwrap(element));
     });
-            callBk(pdata) ;
+            callBk({listdata:pdata}) ;
      }
 });
 

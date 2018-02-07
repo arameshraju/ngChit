@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
 import {ChitGroup} from '../models/chit-group';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ChitgroupDataService {
 
-  chitGroupList: ChitGroup[]=[
-          { groupcode: "G001", groupName: "10L10M PRME1", chitValue: 1000000, months: 10, subscription: 100000 },
-          { groupcode: "G002", groupName: "10L10M PRME2", chitValue: 1000000, months: 10, subscription: 100000 },
-          { groupcode: "G003", groupName: "5L10M PRME3", chitValue: 500000, months: 10, subscription: 50000 }
-        ];
 
-  constructor() { }
+
+  constructor(private http: HttpClient) { }
 
   getChitGroupList(){
-      return  this.chitGroupList;
+    return    this.http.get('http://localhost:3000/action/chitgroup');
+
   }
-  getChitGroup(gcode:String){
-    return this.chitGroupList.filter((chit:ChitGroup)=> chit.groupcode === gcode)[0];
+  getChitGroup(chitGroupList,gcode:String){
+    return chitGroupList.filter((chit:ChitGroup)=> chit.groupcode === gcode)[0];
   }
 
 }
