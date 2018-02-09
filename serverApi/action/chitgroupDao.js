@@ -2,7 +2,7 @@ var ddb= require('./connection');
 var attr = require('dynamodb-data-types').AttributeValue;
 
 
-function putChitGroupData(data){
+function putChitGroupData(data,resultCB){
     var params={
         TableName:'CHITGROUP_MST',
         Item:{
@@ -13,15 +13,10 @@ function putChitGroupData(data){
         'subscription':{N:data.subscription+''}
             }
     };
-    console.log("##### :: " + params )
-    ddb.putItem(params, function(err, data) {
-      if (err) {
-        console.log("Error", err);
-      } else {
-        console.log("Success", data);
-      }
-    });
+     ddb.putItem(params, resultCB);
+
 }
+
 
 function getChitGroup(gcode,gname){
 var params = {

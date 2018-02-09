@@ -16,8 +16,18 @@ router.get('/action/chitgroup', function(req, res) {
 
 // Define the about route
 router.post('/action/chitgroup', function(req, res) {
-  res.send('About us');
-});
 
+var re=dao.putChitGroupData(req.body);
+
+ dao.putChitGroupData(req.body,function(err, data) {
+             if (err) {
+               console.log("Error", err);
+               res.send({status:'Error',message:err});
+             } else {
+               console.log("Success", data);
+               res.send({status:'Success',message:data});
+             }
+           });
+});
 
 module.exports = router;

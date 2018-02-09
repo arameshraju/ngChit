@@ -22,8 +22,8 @@ export class ChitgroupComponent implements OnInit {
       });
     }
   submitHandler(formData) {
-
     console.log(formData);
+    this.chitgroupData.postChitGroup(formData).subscribe(data =>  {  console.log(data)});
   }
   viewGroup(data){
      let cdata = this.chitgroupData.getChitGroup(this.chitgorupList,data);
